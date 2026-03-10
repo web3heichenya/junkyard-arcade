@@ -1,0 +1,219 @@
+@import 'tailwindcss';
+@plugin "tailwindcss-animate";
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-shadow: var(--shadow);
+  --color-button-hot: var(--button-hot);
+  --color-outline-fill: var(--outline-fill);
+  --color-outline-border: var(--outline-border);
+  --color-outline-hot: var(--outline-hot);
+  --color-secondary-border: var(--secondary-border);
+  --color-secondary-hot: var(--secondary-hot);
+  --color-danger-border: var(--danger-border);
+  --color-danger-hot: var(--danger-hot);
+}
+
+:root {
+  --background: hsl(50 100% 97%);
+  --foreground: hsl(222.2 60% 8%);
+
+  --card: hsl(50 100% 99%);
+  --card-foreground: hsl(222.2 60% 8%);
+
+  --popover: hsl(50 100% 99%);
+  --popover-foreground: hsl(222.2 60% 8%);
+
+  --primary: hsl(222.2 60% 12%);
+  --primary-foreground: hsl(50 100% 97%);
+
+  --secondary: hsl(50 45% 92%);
+  --secondary-foreground: hsl(222.2 60% 12%);
+
+  --muted: hsl(50 35% 92%);
+  --muted-foreground: hsl(222.2 18% 34%);
+
+  --accent: hsl(140 78% 45%);
+  --accent-foreground: hsl(222.2 60% 8%);
+
+  --destructive: hsl(0 84% 60%);
+  --destructive-foreground: hsl(50 100% 97%);
+
+  --border: hsl(222.2 20% 86%);
+  --input: hsl(222.2 20% 86%);
+  --ring: hsl(222.2 60% 12%);
+  --shadow: hsl(222.2 60% 12%);
+  --button-hot: hsl(140 78% 45%);
+  --outline-fill: hsl(50 100% 99%);
+  --outline-border: hsl(222.2 26% 30%);
+  --outline-hot: hsl(40 95% 55%);
+  --secondary-border: hsl(222.2 24% 24%);
+  --secondary-hot: hsl(50 45% 84%);
+  --danger-border: hsl(0 68% 35%);
+  --danger-hot: hsl(0 84% 54%);
+
+  --radius: 14px;
+}
+
+.dark {
+  --background: hsl(222.2 60% 7%);
+  --foreground: hsl(50 70% 96%);
+
+  --card: hsl(222.2 60% 9%);
+  --card-foreground: hsl(50 70% 96%);
+
+  --popover: hsl(222.2 60% 9%);
+  --popover-foreground: hsl(50 70% 96%);
+
+  --primary: hsl(50 70% 96%);
+  --primary-foreground: hsl(222.2 60% 10%);
+
+  --secondary: hsl(222.2 30% 16%);
+  --secondary-foreground: hsl(50 70% 96%);
+
+  --muted: hsl(222.2 30% 16%);
+  --muted-foreground: hsl(50 18% 70%);
+
+  --accent: hsl(140 78% 45%);
+  --accent-foreground: hsl(222.2 60% 10%);
+
+  --destructive: hsl(0 70% 45%);
+  --destructive-foreground: hsl(50 70% 96%);
+
+  --border: hsl(222.2 30% 16%);
+  --input: hsl(222.2 30% 16%);
+  --ring: hsl(50 70% 96%);
+  --shadow: hsl(50 70% 96%);
+  --button-hot: hsl(40 95% 55%);
+  --outline-fill: hsl(222.2 60% 10%);
+  --outline-border: hsl(50 30% 72%);
+  --outline-hot: hsl(140 78% 45%);
+  --secondary-border: hsl(50 18% 70%);
+  --secondary-hot: hsl(222.2 25% 22%);
+  --danger-border: hsl(0 78% 68%);
+  --danger-hot: hsl(0 70% 52%);
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family:
+    var(--font-body), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
+    'Courier New', monospace;
+}
+
+.jy-display {
+  font-family:
+    var(--font-display), var(--font-body), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    'Liberation Mono', 'Courier New', monospace;
+  letter-spacing: 0.04em;
+}
+
+/* Pixel-ish atmosphere: subtle grid + scanlines.
+   background-attachment: fixed keeps the gradient pinned to the viewport
+   so it looks like one continuous backdrop instead of colour blocks. */
+.jy-bg {
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      hsl(222.2 60% 8% / 0.04) 0px,
+      hsl(222.2 60% 8% / 0.04) 1px,
+      transparent 1px,
+      transparent 6px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      hsl(222.2 60% 8% / 0.035) 0px,
+      hsl(222.2 60% 8% / 0.035) 1px,
+      transparent 1px,
+      transparent 10px
+    ),
+    radial-gradient(ellipse 120% 60% at 15% 8%, hsl(140 78% 45% / 0.14), transparent 60%),
+    radial-gradient(ellipse 100% 50% at 88% 12%, hsl(40 95% 55% / 0.1), transparent 55%);
+  background-attachment: fixed;
+}
+
+.pixelated {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+[data-rk] button,
+.jy-action-btn {
+  border-radius: 0 !important;
+  border: 2px solid var(--foreground) !important;
+  background: var(--card) !important;
+  color: var(--foreground) !important;
+  box-shadow: 4px 4px 0 0 var(--shadow) !important;
+  font-family:
+    var(--font-body), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
+    'Courier New', monospace !important;
+  font-size: 1.1rem !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+  height: 40px !important;
+  transition:
+    transform 0.1s,
+    box-shadow 0.1s,
+    background 0.1s;
+}
+
+[data-rk] button:hover,
+.jy-action-btn:hover {
+  transform: translate(-2px, -2px);
+  background: var(--button-hot) !important;
+  color: var(--foreground) !important;
+  box-shadow: 6px 6px 0 0 var(--shadow) !important;
+}
+
+[data-rk] button:active,
+.jy-action-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 0 var(--shadow) !important;
+}
+
+.jy-action-btn {
+  width: 40px !important;
+  /* Square for icon buttons */
+}
+
+.jy-action-btn svg {
+  width: 1.2rem;
+  height: 1.2rem;
+}

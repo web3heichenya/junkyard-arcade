@@ -1,0 +1,121 @@
+specVersion: 1.0.0
+indexerHints:
+    prune: auto
+schema:
+    file: ./schema.graphql
+dataSources:
+    # JunkyardFactory - Main entry point for series creation
+    - kind: ethereum
+      name: JunkyardFactory
+      network: base-sepolia
+      source:
+          address: "0x4E0b1240D3350f34dfC3bbA114076A87C25Dd0aD"
+          abi: JunkyardFactory
+          startBlock: 38637302
+      mapping:
+          kind: ethereum/events
+          apiVersion: 0.0.7
+          language: wasm/assemblyscript
+          entities:
+              - Global
+              - Series
+              - User
+          abis:
+              - name: JunkyardFactory
+                file: ../contracts/out/JunkyardFactory.sol/JunkyardFactory.json
+          eventHandlers:
+              - event: SeriesCreated(indexed uint256,indexed address,indexed address,address,address,uint256,address,uint256,uint256,uint256,address,address,address,uint8)
+                handler: handleSeriesCreated
+          file: ./src/factory.ts
+
+templates:
+    # JunkyardSeries - Dynamically created for each series
+    - kind: ethereum
+      name: JunkyardSeries
+      network: base-sepolia
+      source:
+          abi: JunkyardSeries
+      mapping:
+          kind: ethereum/events
+          apiVersion: 0.0.7
+          language: wasm/assemblyscript
+          entities:
+              - Series
+              - BlindBox
+              - User
+              - Transaction
+          abis:
+              - name: JunkyardSeries
+                file: ../contracts/out/JunkyardSeries.sol/JunkyardSeries.json
+          eventHandlers:
+              - event: BlindBoxPurchased(indexed address,indexed uint256,uint256)
+                handler: handleBlindBoxPurchased
+              - event: BlindBoxOpened(indexed address,indexed uint256,bytes32,uint256)
+                handler: handleBlindBoxOpened
+              - event: PrizesClaimed(indexed address,indexed uint256)
+                handler: handlePrizesClaimed
+              - event: PrizeDistributed(indexed address,indexed uint256,uint8,indexed address,uint256,uint256)
+                handler: handlePrizeDistributed
+              - event: SaleConfigUpdated(uint256,uint256,uint256,uint256)
+                handler: handleSaleConfigUpdated
+              - event: LeftoverPolicyUpdated(uint8,indexed address)
+                handler: handleLeftoverPolicyUpdated
+              - event: LeftoversSwept(indexed address)
+                handler: handleLeftoversSwept
+          file: ./src/series.ts
+
+    # JunkyardNFT - Dynamically created for each series
+    - kind: ethereum
+      name: JunkyardNFT
+      network: base-sepolia
+      source:
+          abi: JunkyardNFT
+      mapping:
+          kind: ethereum/events
+          apiVersion: 0.0.7
+          language: wasm/assemblyscript
+          entities:
+              - BlindBox
+          abis:
+              - name: JunkyardNFT
+                file: ../contracts/out/JunkyardNFT.sol/JunkyardNFT.json
+          eventHandlers:
+              - event: BlindBoxMinted(indexed address,indexed uint256)
+                handler: handleBlindBoxMinted
+              - event: BlindBoxBurned(indexed uint256)
+                handler: handleBlindBoxBurned
+          file: ./src/nft.ts
+
+    # JunkyardPrizePool - Dynamically created for each series
+    - kind: ethereum
+      name: JunkyardPrizePool
+      network: base-sepolia
+      source:
+          abi: JunkyardPrizePool
+      mapping:
+          kind: ethereum/events
+          apiVersion: 0.0.7
+          language: wasm/assemblyscript
+          entities:
+              - Asset
+              - AssetConfig
+              - AssetDeposit
+              - PrizeDistribution
+              - Series
+          abis:
+              - name: JunkyardPrizePool
+                file: ../contracts/out/JunkyardPrizePool.sol/JunkyardPrizePool.json
+          eventHandlers:
+              - event: AssetsDeposited(indexed address,uint8,indexed address,uint256,uint256)
+                handler: handleAssetsDeposited
+              - event: AssetWhitelisted(indexed address,bool)
+                handler: handleAssetWhitelisted
+              - event: AssetConfigInitialized(indexed address,uint16)
+                handler: handleAssetConfigInitialized
+              - event: AssetBalanceSynced(indexed address,uint256)
+                handler: handleAssetBalanceSynced
+              - event: AssetTokenBalanceSynced(indexed address,uint8,indexed uint256,uint256)
+                handler: handleAssetTokenBalanceSynced
+              - event: LeftoverSwept(indexed address,uint8,indexed address,uint256,uint256)
+                handler: handleLeftoverSwept
+          file: ./src/prizepool.ts
