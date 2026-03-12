@@ -2,21 +2,18 @@
 
 import '@rainbow-me/rainbowkit/styles.css';
 import * as React from 'react';
-import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import { getDefaultConfig, RainbowKitProvider } from '@rainbow-me/rainbowkit';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { WagmiProvider, createConfig, http } from 'wagmi';
+import { WagmiProvider } from 'wagmi';
 import { baseSepolia } from 'wagmi/chains';
-import { injected } from '@wagmi/core';
 
 const queryClient = new QueryClient();
 
-const config = createConfig({
+const config = getDefaultConfig({
+  appName: 'Junkyard Arcade',
+  projectId: process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID || '',
   chains: [baseSepolia],
   ssr: true,
-  connectors: [injected()],
-  transports: {
-    [baseSepolia.id]: http(),
-  },
 });
 
 export function Web3Provider({ children }: { children: React.ReactNode }) {

@@ -4,8 +4,8 @@ import * as React from 'react';
 import Link from 'next/link';
 import Avatar from 'boring-avatars';
 import { LogOut, Package } from 'lucide-react';
-import { useAccount, useConnect, useDisconnect } from 'wagmi';
-import { injected } from '@wagmi/core';
+import { useConnectModal } from '@rainbow-me/rainbowkit';
+import { useAccount, useDisconnect } from 'wagmi';
 
 import { Button } from '@/components/ui/button';
 import {
@@ -20,7 +20,7 @@ import { useI18n } from '@/providers/i18n-provider';
 export function WalletButton() {
   const { locale, t } = useI18n();
   const { address, isConnected } = useAccount();
-  const { connect } = useConnect();
+  const { openConnectModal } = useConnectModal();
   const { disconnect } = useDisconnect();
 
   if (!isConnected) {
@@ -29,7 +29,7 @@ export function WalletButton() {
         variant="outline"
         size="sm"
         className="rounded-none border-2 border-foreground bg-card text-foreground shadow-[4px_4px_0_0_var(--color-shadow)] font-(--font-body) text-sm tracking-wider uppercase hover:-translate-y-0.5 hover:shadow-[5px_5px_0_0_var(--color-shadow)] active:translate-y-0.5 active:shadow-[2px_2px_0_0_var(--color-shadow)] transition-transform h-10 px-4 whitespace-nowrap"
-        onClick={() => connect({ connector: injected() })}
+        onClick={() => openConnectModal?.()}
       >
         {t('nav.connectWallet')}
       </Button>

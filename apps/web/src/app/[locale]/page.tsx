@@ -39,10 +39,10 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   return (
     <div className="space-y-8">
       <Hero />
-      <section className="space-y-10 mt-24 py-12 relative">
+      <section className="relative mt-24 space-y-10 overflow-hidden py-12">
         {/* Background Particles Decoration */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 grid place-items-center opacity-5 pointer-events-none">
-          <Swords className="w-[500px] h-[500px]" />
+        <div className="pointer-events-none absolute top-1/2 left-1/2 -z-10 grid -translate-x-1/2 -translate-y-1/2 place-items-center opacity-5">
+          <Swords className="h-[min(500px,calc(100vw-2rem))] w-[min(500px,calc(100vw-2rem))]" />
         </div>
 
         <div className="text-center space-y-4 max-w-2xl mx-auto">
@@ -160,7 +160,9 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 },
               ].map((item) => (
                 <AccordionItem key={item.value} value={item.value}>
-                  <AccordionTrigger>{item.question}</AccordionTrigger>
+                  <AccordionTrigger className="!h-auto items-start gap-3 py-4 sm:items-center sm:py-5 [&>span]:flex-1 [&>span]:whitespace-normal [&>span]:leading-relaxed">
+                    {item.question}
+                  </AccordionTrigger>
                   <AccordionContent>{item.answer}</AccordionContent>
                 </AccordionItem>
               ))}
