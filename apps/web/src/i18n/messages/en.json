@@ -1,0 +1,717 @@
+{
+  "app": {
+    "name": "Junkyard Arcade",
+    "tagline": "Turn meme dust into verifiable blind boxes."
+  },
+  "footer": {
+    "builtWith": "Built onchain with",
+    "community": "Community",
+    "resources": "Resources",
+    "github": "GitHub",
+    "rights": "All rights reserved."
+  },
+  "nav": {
+    "create": "Create",
+    "series": "Series",
+    "me": "My Boxes",
+    "docs": "Docs",
+    "menu": "Menu",
+    "connectWallet": "Connect",
+    "disconnect": "Disconnect"
+  },
+  "home": {
+    "title": "Junkyard Arcade",
+    "subtitle": "Ape into verifiable onchain blind boxes.",
+    "ctaPrimary": "Explore",
+    "ctaSecondary": "Connect Wallet",
+    "heroTag1": "DEGEN NATIVE",
+    "heroTag2": "PROVABLY FAIR",
+    "heroTag3": "WAGMI",
+    "heroPreviewLabel": "Junkyard signal",
+    "heroPreviewStatus": "Ready",
+    "flowEyebrow": "Operation flow",
+    "flowTitle": "Three steps. One irreversible loop.",
+    "exploreCta": "Open explore page",
+    "step1Title": "Seed the series",
+    "step1Desc": "Creators define sale parameters, guards, oracle, and max asset types per opening before funding the prize pool.",
+    "step2Title": "Buy and open",
+    "step2Desc": "Users buy a soulbound blind box and pay oracle cost only when they decide to open it.",
+    "step3Title": "Claim and recycle",
+    "step3Desc": "Once VRF resolves, prizes are claimable, the box is burned, and empty pools wait for creator restocks.",
+    "story1Kicker": "Asset packaging",
+    "story1Title": "Turn wallet leftovers into something people actually want to open.",
+    "story2Kicker": "Reveal tension",
+    "story2Title": "The box stays unresolved until randomness lands onchain.",
+    "story3Kicker": "Operator console",
+    "story3Title": "Run the whole drop from one readable control surface.",
+    "faqKicker": "Q&A",
+    "faqTitle": "Before You Open",
+    "faq1Question": "What actually lives inside a Junkyard Arcade blind box?",
+    "faq1Answer": "Each series can be funded with ERC20, ERC721, and ERC1155 rewards. What you receive depends on the prize pool that the creator configured for that specific drop.",
+    "faq2Question": "Why is opening separated from buying?",
+    "faq2Answer": "Buying mints the blind box NFT. Opening requests randomness. That split keeps the reveal hidden until the oracle responds and makes the outcome verifiable onchain.",
+    "faq3Question": "Can creators keep managing a drop after launch?",
+    "faq3Answer": "Yes. Creators can keep funding rewards, update sale parameters within protocol rules, monitor whitelist state, and handle leftovers after the drop finishes.",
+    "faq4Question": "Do I need to trust an offchain reveal server?",
+    "faq4Answer": "No. The reveal path is designed around Chainlink VRF, so the randomness and final reward flow are resolved through onchain interactions instead of a private reveal script."
+  },
+  "series": {
+    "exploreTitle": "Series Explore",
+    "exploreDesc": "Browse all indexed series, inspect supply and pool state, and jump into live blind-box drops.",
+    "kicker": "Drop radar",
+    "detailKicker": "Series control tower",
+    "detailDesc": "Read sale pressure, prize inventory, and operator controls before you buy, open, or rebalance this blind-box line.",
+    "emptyTitle": "No series yet",
+    "emptyDesc": "No blind-box series have been created on-chain. Be the first to deploy one.",
+    "detailTitle": "Series",
+    "inspectCta": "Inspect",
+    "creator": "Creator",
+    "price": "Price",
+    "paymentToken": "Payment",
+    "paymentNative": "Native",
+    "sold": "Sold",
+    "max": "Max",
+    "starts": "Starts",
+    "ends": "Ends",
+    "unlimited": "Unlimited",
+    "open": "Open",
+    "claim": "Claim",
+    "buy": "Buy",
+    "opened": "Opened",
+    "claimed": "Claimed",
+    "oracle": "Oracle",
+    "balShort": "Bal",
+    "depShort": "Dep",
+    "outShort": "Out",
+    "assetCapShort": "Types/open",
+    "activeAssetsShort": "Active types",
+    "assetCapLabel": "Max distinct asset types per opening",
+    "maxShareLabel": "Max share per claim",
+    "prizePoolTitle": "Prize Pool",
+    "noAssets": "No assets deposited yet.",
+    "missingAddressesTitle": "Actions",
+    "missingAddressesDesc": "Missing contract addresses from subgraph.",
+    "featuredTitle": "Featured signal",
+    "metricRevenue": "Revenue",
+    "statusLabel": "Status",
+    "configLocked": "Config lock",
+    "leftoverPolicy": "Leftover policy",
+    "prizePool": "Prize pool",
+    "collectionAddress": "Blind box NFT",
+    "sectionRuntime": "Runtime telemetry",
+    "sectionRuntimeDesc": "Read the live sale window, active state, and routing contracts before deciding whether this drop is open, stalled, or already closing out.",
+    "runtimeWindowDesc": "Use the live sale window and state to judge whether this drop is open, stalled, or already draining toward completion.",
+    "runtimeContractsTitle": "Contract routing",
+    "runtimeContractsDesc": "Core addresses that define purchase flow, prize distribution, and guard enforcement for this series.",
+    "sectionRewards": "Reward matrix",
+    "sectionRewardsDesc": "Review reward configuration, whitelist status, and claim-share limits before managing the pool or changing leftover handling.",
+    "assetConfigsTitle": "Asset configuration",
+    "assetConfigsDesc": "Whitelisted reward rails, configuration state, and per-claim share limits.",
+    "leftoverTimelineTitle": "Sweep timeline",
+    "leftoverTimelineDesc": "Every leftover asset transfer emitted once the series is fully claimable and cleanup is allowed.",
+    "whitelisted": "Whitelisted",
+    "notWhitelisted": "Not whitelisted",
+    "configured": "Configured",
+    "pendingConfig": "Pending",
+    "leftoverRecipient": "Recipient",
+    "leftoverTime": "Time",
+    "sectionPulse": "Market pulse",
+    "sectionPulseDesc": "Read the field before opening a single drop. These counters show where activity and friction are clustering right now.",
+    "sectionBoard": "Drop board",
+    "sectionBoardDesc": "Every indexed series, sorted from newest to oldest, with enough telemetry to decide what deserves a closer look.",
+    "statsLiveTitle": "Live drops",
+    "statsLiveDesc": "Series currently open and funded enough to keep the loop running.",
+    "statsSoldTitle": "Boxes sold",
+    "statsSoldDesc": "Total purchase count across the current indexed board.",
+    "statsClaimedTitle": "Prizes claimed",
+    "statsClaimedDesc": "Completed reward pulls that have already resolved onchain.",
+    "statsRefillTitle": "Need refill",
+    "statsRefillDesc": "Series blocked by empty prize pools and waiting on creators.",
+    "metricSupply": "Supply fill",
+    "metricLifecycle": "Lifecycle",
+    "metricAssets": "Asset spread",
+    "metricWindow": "Sale window",
+    "tabsOverview": "Overview",
+    "tabsOwned": "My boxes",
+    "tabsAdmin": "Admin",
+    "buyNow": "Buy now",
+    "boxesTitle": "Your box rack",
+    "boxesDesc": "Every blind box you purchased for this series, ready to open or claim once its state allows it.",
+    "ownedEmpty": "You haven't bought any boxes from this series yet.",
+    "claimedPrizeCount": "Rewards claimed",
+    "claimedRewardsTitle": "Claim result",
+    "claimedRewardsDesc": "Asset types and amounts already distributed to your wallet for this blind box.",
+    "state": {
+      "live": "Live",
+      "awaitingRefill": "Awaiting refill",
+      "soldOut": "Sold out",
+      "ended": "Ended"
+    }
+  },
+  "common": {
+    "language": "Language",
+    "english": "English",
+    "chinese": "中文",
+    "loading": "Loading…",
+    "notAvailable": "Not available",
+    "unknownError": "Unknown error",
+    "errorPrefix": "Error",
+    "subgraphErrorPrefix": "Subgraph error",
+    "txPreparing": "Preparing transaction",
+    "txSent": "Transaction sent",
+    "txSuccess": "Transaction confirmed",
+    "txFailed": "Transaction failed",
+    "whitelisted": "Whitelisted"
+  },
+  "hero": {
+    "dust": "memecoin dust",
+    "box": "blind box NFT",
+    "rng": "verifiable RNG"
+  },
+  "notFound": {
+    "desc": "Page not found.",
+    "goHome": "Go home"
+  },
+  "docs": {
+    "sidebarEyebrow": "Docs",
+    "sidebarTitle": "Project Docs",
+    "sidebarDescription": "Single-page documentation index covering the project overview, highlights, and usage instructions.",
+    "heroEyebrow": "Junkyard Arcade Docs",
+    "heroTitle": "Project Documentation",
+    "heroDescription": "This page organizes the blind box protocol into a more traditional documentation reading experience, covering overview, core features, and operational usage.",
+    "footerLabel": "Project Docs",
+    "footerCurrent": "Single-page index",
+    "pages": [
+      {
+        "category": "get-started",
+        "slug": "introduction",
+        "groupLabel": "Introduction",
+        "navLabel": "Project Introduction",
+        "title": "Project Introduction",
+        "description": "Junkyard Arcade is a full-stack onchain blind box system built around verifiable randomness, multi-asset prize pools, and an operator-friendly web console.",
+        "eyebrow": "Introduction",
+        "sections": [
+          {
+            "id": "overview",
+            "title": "What the project is",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "content": "The protocol packages token dust, NFTs, and mixed inventories into blind box series. Creators launch a series contract, fund a prize pool, and let collectors buy, open, and claim through a single product surface."
+              },
+              {
+                "type": "paragraph",
+                "content": "The repository is split into three layers: Foundry contracts for protocol rules, a Graph subgraph for indexed state, and a Next.js 15 frontend for the operator and collector experience."
+              }
+            ]
+          },
+          {
+            "id": "stack",
+            "title": "Stack at a glance",
+            "blocks": [
+              {
+                "type": "list",
+                "items": [
+                  "Contracts: Solidity + Foundry for factory, series, prize pool, and oracle integrations.",
+                  "Indexer: The Graph subgraph for series, blind box, asset, and transaction state.",
+                  "Frontend: Next.js 15 App Router, React 19, wagmi, RainbowKit, shadcn/ui."
+                ]
+              }
+            ]
+          },
+          {
+            "id": "constraints",
+            "title": "Current product constraints",
+            "blocks": [
+              {
+                "type": "quote",
+                "content": "The current creator flow is intentionally constrained: Base Sepolia only, preset factory/oracle wiring, and a UI that optimizes clarity over protocol breadth."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "category": "get-started",
+        "slug": "quick-start",
+        "groupLabel": "Introduction",
+        "navLabel": "Quick Start",
+        "title": "Quick Start",
+        "description": "The shortest path to run the workspace locally and validate that contracts, subgraph, and frontend are wired together.",
+        "eyebrow": "Setup",
+        "sections": [
+          {
+            "id": "install",
+            "title": "1. Install dependencies",
+            "blocks": [
+              {
+                "type": "code",
+                "code": "pnpm install"
+              }
+            ]
+          },
+          {
+            "id": "env",
+            "title": "2. Prepare frontend environment values",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "content": "Copy the example env for the web app and fill in the subgraph endpoint plus Base Sepolia factory/oracle presets."
+              },
+              {
+                "type": "code",
+                "code": "cp apps/web/.env.example apps/web/.env.local"
+              }
+            ]
+          },
+          {
+            "id": "validate",
+            "title": "3. Validate protocol and indexer layers",
+            "blocks": [
+              {
+                "type": "code",
+                "code": "pnpm --dir apps/contracts test\npnpm --dir apps/subgraph codegen\npnpm --dir apps/subgraph build"
+              }
+            ]
+          },
+          {
+            "id": "run",
+            "title": "4. Start the frontend",
+            "blocks": [
+              {
+                "type": "code",
+                "code": "pnpm --dir apps/web graphclient:build\npnpm --dir apps/web dev"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "category": "protocol",
+        "slug": "features",
+        "groupLabel": "Core concepts",
+        "navLabel": "Core Features",
+        "title": "Core Features",
+        "description": "The protocol is opinionated in the places where launch mistakes are expensive and flexible where creators need room to design drops.",
+        "eyebrow": "Features",
+        "sections": [
+          {
+            "id": "randomness",
+            "title": "Verifiable randomness",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "content": "Blind boxes remain unresolved until the oracle fulfills randomness. That keeps prize assignment hidden before opening and removes the need for offchain reveal scripts."
+              }
+            ]
+          },
+          {
+            "id": "assets",
+            "title": "Mixed reward inventory",
+            "blocks": [
+              {
+                "type": "list",
+                "items": [
+                  "ERC20 balances for token-style prizes.",
+                  "ERC721 collectibles for single-item rewards.",
+                  "ERC1155 balances for semi-fungible prize buckets."
+                ]
+              }
+            ]
+          },
+          {
+            "id": "operations",
+            "title": "Operational controls",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "content": "Creators can update sale settings within protocol limits, configure leftover handling, and manage reward inventory from the admin dock on the series detail page."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "category": "protocol",
+        "slug": "lifecycle",
+        "groupLabel": "Core concepts",
+        "navLabel": "Blind Box Lifecycle",
+        "title": "Blind Box Lifecycle",
+        "description": "From deployment to leftover cleanup, the protocol separates each stage so the system stays auditable and operationally clear.",
+        "eyebrow": "Lifecycle",
+        "sections": [
+          {
+            "id": "deploy",
+            "title": "1. Deploy the series",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "content": "The factory creates a new series contract with the chosen name, symbol, supply cap, sale window, payment asset, and guard/oracle presets."
+              }
+            ]
+          },
+          {
+            "id": "fund",
+            "title": "2. Fund the prize pool",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "content": "The series owner initializes reward assets, whitelists them, approves transfers, and deposits inventory into the prize pool before the drop goes live."
+              }
+            ]
+          },
+          {
+            "id": "settle",
+            "title": "3. Buy, open, and claim",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "content": "Collectors purchase a blind box NFT, request randomness to open it, and claim after fulfillment resolves the prize outcome."
+              }
+            ]
+          },
+          {
+            "id": "leftovers",
+            "title": "4. Handle leftovers",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "content": "After the series ends and claims settle, the owner can execute the configured leftover strategy against remaining assets."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "category": "guides",
+        "slug": "creator-flow",
+        "groupLabel": "Operational guides",
+        "navLabel": "Creator Workflow",
+        "title": "Creator Workflow",
+        "description": "How a creator launches, funds, monitors, and closes a blind box series using the current frontend.",
+        "eyebrow": "Guide",
+        "sections": [
+          {
+            "id": "create",
+            "title": "Create a series",
+            "blocks": [
+              {
+                "type": "list",
+                "items": [
+                  "Open /create and connect the creator wallet.",
+                  "Fill name, symbol, supply cap, price, and sale window.",
+                  "Submit the deployment transaction and wait for redirect to the new series detail page."
+                ]
+              }
+            ]
+          },
+          {
+            "id": "funding",
+            "title": "Fund rewards",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "content": "Use the admin tabs on the series detail page to whitelist reward assets and deposit ERC20, ERC721, or ERC1155 inventory."
+              }
+            ]
+          },
+          {
+            "id": "manage",
+            "title": "Manage live operations",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "content": "Track sales and claims from /series and the series detail dashboard. If needed, tighten the sale window or apply leftover policy after the campaign ends."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "category": "guides",
+        "slug": "collector-flow",
+        "groupLabel": "Operational guides",
+        "navLabel": "Collector Workflow",
+        "title": "Collector Workflow",
+        "description": "How a player discovers a drop, buys a box, opens it, and claims the final reward.",
+        "eyebrow": "Guide",
+        "sections": [
+          {
+            "id": "discover",
+            "title": "Discover a drop",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "content": "Browse /series to compare active drops, supply pressure, and sale windows before entering a specific series."
+              }
+            ]
+          },
+          {
+            "id": "buy",
+            "title": "Buy a blind box",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "content": "Open the target series detail page, connect a wallet, and purchase from the action dock. The box is minted directly into the connected wallet."
+              }
+            ]
+          },
+          {
+            "id": "open-claim",
+            "title": "Open and claim",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "content": "Use the owned blind box shelf on the series detail page or /me to request opening. Return after fulfillment to claim the reward and close the box lifecycle."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "category": "reference",
+        "slug": "configuration",
+        "groupLabel": "Reference",
+        "navLabel": "Configuration",
+        "title": "Configuration Reference",
+        "description": "The minimal environment values required for the current Base Sepolia deployment path and frontend experience.",
+        "eyebrow": "Reference",
+        "sections": [
+          {
+            "id": "env-values",
+            "title": "Important environment values",
+            "blocks": [
+              {
+                "type": "list",
+                "items": [
+                  "NEXT_PUBLIC_SITE_URL: canonical host for metadata and sitemap.",
+                  "SUBGRAPH_URL / NEXT_PUBLIC_SUBGRAPH_URL: indexed data endpoint.",
+                  "NEXT_PUBLIC_FACTORY_SEPOLIA: factory preset used by the create flow.",
+                  "NEXT_PUBLIC_DEFAULT_ORACLE_SEPOLIA: default Chainlink VRF preset exposed in the create form."
+                ]
+              }
+            ]
+          },
+          {
+            "id": "example",
+            "title": "Example",
+            "blocks": [
+              {
+                "type": "code",
+                "code": "NEXT_PUBLIC_SITE_URL=http://localhost:3000\nSUBGRAPH_URL=http://localhost:8000/subgraphs/name/junkyard\nNEXT_PUBLIC_SUBGRAPH_URL=http://localhost:8000/subgraphs/name/junkyard\nNEXT_PUBLIC_FACTORY_SEPOLIA=0x...\nNEXT_PUBLIC_DEFAULT_ORACLE_SEPOLIA=0x..."
+              }
+            ]
+          },
+          {
+            "id": "notes",
+            "title": "Notes",
+            "blocks": [
+              {
+                "type": "quote",
+                "content": "The frontend create flow is intentionally fixed to Base Sepolia today. If production networks are added later, this page should expand alongside the preset system."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "create": {
+    "kicker": "Creator console",
+    "title": "Create Series",
+    "overviewCard1Title": "Shape the drop",
+    "overviewCard1Desc": "Define identity, supply, sale window, and payment mode before the first mint ever happens.",
+    "overviewCard2Title": "Lock the rules",
+    "overviewCard2Desc": "Guards and whitelisted contracts decide who can configure, buy, and request randomness.",
+    "pageDesc": "Launch a new blind box series on Base Sepolia from your wallet.",
+    "desc": "The create flow is fixed to one supported network with readable presets for payment, guards, and oracle.",
+    "formTitle": "Deployment config",
+    "formDesc": "Review identity, sale settings, and contract presets before sending the deployment transaction.",
+    "completionLabel": "Required blocks ready",
+    "fixedNetwork": "Base Sepolia",
+    "sectionIdentity": "Collection identity",
+    "sectionIdentityDesc": "These values define how the soulbound blind box collection will appear onchain and in wallets.",
+    "sectionSale": "Sale parameters",
+    "sectionSaleDesc": "Configure price, supply, opening limits, and time window with immutable constraints in mind.",
+    "sectionSecurity": "Guards and randomness",
+    "sectionSecurityDesc": "Attach the oracle and both guard contracts that protect configuration and purchase flows.",
+    "name": "NFT name",
+    "symbol": "NFT symbol",
+    "priceEther": "Price (ether)",
+    "paymentToken": "Payment token",
+    "maxSupply": "Max supply",
+    "maxAssetTypesPerOpening": "Max asset types per opening",
+    "maxAssetTypesPerOpeningHint": "Immutable after creation. Controls how many distinct asset contracts one box can distribute.",
+    "startTime": "Start time",
+    "endTime": "End time",
+    "endTimeHint": "Leave empty to keep the drop open-ended.",
+    "configGuard": "Config guard",
+    "buyGuard": "Buy guard",
+    "oracle": "Oracle",
+    "selectPlaceholder": "Select an option",
+    "pickStartDate": "Pick start date",
+    "pickEndDate": "Pick end date",
+    "timeLabel": "Time",
+    "clearDate": "Clear",
+    "paymentNativeOption": "Native token (ETH)",
+    "guardNoneOption": "No guard",
+    "configGuardOwnerOption": "Owner Config Guard",
+    "buyGuardOpenOption": "Open Buy Guard",
+    "oracleDefaultOption": "Chainlink VRF Oracle",
+    "previewTitle": "Drop preview",
+    "previewDesc": "A compact read-through before you sign.",
+    "previewCollection": "Collection",
+    "previewNetwork": "Network",
+    "previewPayment": "Payment",
+    "previewWindow": "Sale window",
+    "previewFactory": "Factory",
+    "previewGuards": "Guards",
+    "previewOracle": "Oracle",
+    "unlimitedLabel": "Unlimited",
+    "checklistTitle": "Before you deploy",
+    "checklistDesc": "The critical rules that are easiest to miss when you're moving fast.",
+    "check1": "Price is entered in ether and converted to the onchain wei amount at submit time.",
+    "check2": "Max asset types per opening is fixed at creation time and cannot be edited later.",
+    "check3": "Leaving the end date empty keeps the sale open until you close or reconfigure it onchain.",
+    "quickStatusTitle": "Quick status",
+    "quickStatusDesc": "Three fast signals before the wallet popup.",
+    "statusNetwork": "Network",
+    "statusConfig": "Config",
+    "statusOk": "Ready",
+    "statusMissing": "Missing",
+    "switchNetwork": "Switch",
+    "toastExecuting": "Preparing transaction",
+    "toastSent": "Transaction sent",
+    "toastSuccess": "Series created",
+    "toastFailed": "Transaction failed",
+    "submit": "Create series"
+  },
+  "funding": {
+    "title": "Prize Pool Funding",
+    "desc": "Initialize immutable asset config, then whitelist and deposit ERC20, ERC721, or ERC1155 prizes for this series.",
+    "connectPrompt": "Funding is wallet-gated",
+    "connectDesc": "Connect the creator wallet before configuring reward rails or topping up balances.",
+    "token": "Asset contract",
+    "amount": "Amount (raw units)",
+    "tokenId": "Token ID",
+    "maxShareBps": "Max share per claim (bps)",
+    "maxSharePercent": "Max share per claim (%)",
+    "whitelistStep": "Initialize / whitelist reward token",
+    "depositStep": "Deposit ERC20 balance",
+    "approveErc721": "Approve ERC721 token",
+    "approveErc1155": "Authorize ERC1155 operator",
+    "depositErc20": "Deposit ERC20 balance",
+    "depositErc721": "Deposit ERC721 token",
+    "depositErc1155": "Deposit ERC1155 balance",
+    "whitelist": "Whitelist token",
+    "deposit": "Deposit ERC20",
+    "depositAction": "Deposit"
+  },
+  "error": {
+    "title": "Something went wrong",
+    "desc": "A rendering or data error occurred. Please retry.",
+    "retry": "Retry",
+    "goHome": "Go home"
+  },
+  "actions": {
+    "connectPrompt": "Wallet needed to operate this series",
+    "connectDesc": "Connect first to buy boxes, request randomness, or claim a resolved reward.",
+    "allowance": "Allowance",
+    "approve": "Approve",
+    "approved": "Approved",
+    "viewOnExplorer": "View on explorer",
+    "awaitingRandomness": "Waiting for randomness",
+    "claimReady": "Ready to claim",
+    "openDesc": "Submit an open request for this box. After the transaction confirms, Chainlink still needs time to fulfill randomness.",
+    "waitingDesc": "The randomness request has been sent and is still pending Chainlink fulfillment. Claim becomes available automatically once it resolves.",
+    "claimDesc": "Randomness has resolved. You can now claim the final reward."
+  },
+  "admin": {
+    "title": "Basic info config",
+    "panelDesc": "Sale controls and leftover policy live here. Use this dock when the series needs tightening, extension, or final cleanup.",
+    "locked": "Locked",
+    "lockedYes": "Yes",
+    "lockedNo": "No",
+    "ended": "Ended",
+    "endedYes": "Yes",
+    "endedNo": "No",
+    "claimedShort": "Claimed",
+    "connectPromptTitle": "Creator controls are locked",
+    "connectTip": "Connect wallet to manage this series (guard rules apply).",
+    "saleTab": "Sale",
+    "leftoversTab": "Leftovers",
+    "salePriceWei": "Price (ether)",
+    "saleStart": "Start time",
+    "saleEnd": "End time",
+    "saleMax": "Max supply",
+    "updateSale": "Update sale config",
+    "currentPolicy": "Current policy",
+    "mode": "Mode",
+    "changeMode": "Change",
+    "leftoverReturn": "RETURN",
+    "leftoverDonate": "DONATE",
+    "leftoverBurn": "BURN",
+    "recipient": "Recipient",
+    "recipientHint": "For BURN, recipient will be ignored by contract. For DONATE, recipient cannot be zero.",
+    "setPolicy": "Set policy",
+    "sweepHint": "Sweep leftovers after series ends and all boxes are claimed.",
+    "sweep": "Sweep leftovers"
+  },
+  "leftovers": {
+    "title": "Leftover Sweeps",
+    "desc": "Asset-level records for prize pool leftovers swept after the series ends.",
+    "noTransfers": "No leftover transfers yet."
+  },
+  "seriesPage": {
+    "loadFailedTitle": "Failed to load series",
+    "loadFailedDesc": "Subgraph request failed or no data returned."
+  },
+  "me": {
+    "kicker": "Prize locker",
+    "title": "My blind-box deck",
+    "desc": "Track what is still sealed, what already resolved, and which series need your next action before value sits idle.",
+    "lastActivity": "Last activity",
+    "connectHint": "Connect a wallet to load your box rack and action queue.",
+    "signalTitle": "Wallet signal",
+    "metricOwned": "Boxes held",
+    "metricOwnedHint": "Every blind box currently tied to this wallet.",
+    "metricQueue": "Pending actions",
+    "metricQueueHint": "Boxes still waiting to be opened or claimed.",
+    "metricSeries": "Live series",
+    "metricSeriesHint": "Distinct active series still worth monitoring.",
+    "readyOpen": "Ready to open",
+    "readyClaim": "Ready to claim",
+    "totalPurchased": "Total purchased",
+    "totalOpened": "Total opened",
+    "totalClaimed": "Total claimed",
+    "queueTitle": "Action queue",
+    "queueDesc": "The next boxes most likely to need your attention, surfaced before they disappear into the full rack.",
+    "queueEmpty": "Nothing is waiting on you right now. Your queue is clear.",
+    "rackTitle": "Box rack",
+    "rackDesc": "A shelf view of every blind box you own, with enough series telemetry to decide whether to open, claim, or just monitor.",
+    "filterAll": "All",
+    "filterUnopened": "Sealed",
+    "filterOpened": "Claimable",
+    "filterClaimed": "Claimed",
+    "emptyUnopened": "No sealed boxes right now.",
+    "emptyOpened": "No claimable boxes right now.",
+    "emptyClaimed": "No claimed history yet.",
+    "connectTitle": "Your locker is offline",
+    "connectDesc": "Connect the wallet that purchased your blind boxes to load the rack, the pending queue, and each series shortcut.",
+    "noBoxes": "No boxes yet.",
+    "boxTitle": "Box",
+    "seriesTitle": "Series",
+    "bought": "Bought",
+    "opened": "Opened",
+    "claimed": "Claimed",
+    "viewSeries": "View series",
+    "openNow": "Open now",
+    "claimNow": "Claim now"
+  },
+  "status": {
+    "UNOPENED": "UNOPENED",
+    "OPENED": "OPENED",
+    "CLAIMED": "CLAIMED",
+    "BURNED": "BURNED"
+  }
+}

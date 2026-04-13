@@ -1,0 +1,66 @@
+query SeriesById($id: ID!) {
+  series(id: $id) {
+    id
+    seriesAddress
+    nftAddress
+    prizePoolAddress
+    creator {
+      id
+      address
+    }
+    price
+    paymentToken
+    maxSupply
+    maxAssetTypesPerOpening
+    startTime
+    endTime
+    configGuard
+    buyGuard
+    oracle
+    configLocked
+    leftoverMode
+    leftoverRecipient
+    leftoversSweptAt
+    leftoversSweptTo
+    activeAssetTypeCount
+    totalPurchased
+    totalOpened
+    totalClaimed
+    totalRevenue
+    assetConfigs {
+      id
+      assetContract
+      assetType
+      whitelisted
+      configured
+      maxShareBps
+      totalDeposited
+      totalDistributed
+      currentBalance
+      updatedAt
+    }
+    assets {
+      id
+      config {
+        id
+        maxShareBps
+      }
+      assetType
+      assetContract
+      tokenId
+      totalDeposited
+      totalDistributed
+      currentBalance
+    }
+    leftoverTransfers {
+      id
+      recipient
+      assetType
+      assetContract
+      tokenId
+      amount
+      timestamp
+      transaction
+    }
+  }
+}

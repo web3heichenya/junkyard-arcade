@@ -1,0 +1,20 @@
+{
+    "name": "@junkyard-arcade/subgraph",
+    "version": "1.0.0",
+    "description": "The Graph subgraph for Junkyard Arcade blind box protocol",
+    "repository": "https://github.com/your-org/junkyard-arcade",
+    "scripts": {
+        "codegen": "graph codegen",
+        "build": "graph build",
+        "format": "prettier --write .",
+        "create-local": "graph create --node http://localhost:8020 junkyard-arcade/subgraph",
+        "deploy-local": "graph deploy --node http://localhost:8020 --ipfs http://localhost:5001 junkyard-arcade/subgraph"
+    },
+    "dependencies": {
+        "@graphprotocol/graph-cli": "^0.68.0",
+        "@graphprotocol/graph-ts": "^0.35.0"
+    },
+    "devDependencies": {
+        "matchstick-as": "^0.6.0"
+    }
+}

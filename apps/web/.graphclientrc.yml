@@ -1,0 +1,10 @@
+sources:
+  - name: junkyard
+    handler:
+      graphql:
+        # Offline-friendly: build schema from a local SDL file (no endpoint needed for codegen).
+        # Keep the runtime queries in the app using `fetch` against SUBGRAPH_URL.
+        source: ./src/graphql/junkyard.schema.graphql
+
+documents:
+  - ./src/graphql/**/*.graphql

@@ -1,0 +1,12 @@
+node_modules
+.turbo
+.next
+dist
+coverage
+apps/contracts/lib
+apps/contracts/cache
+apps/contracts/out
+apps/contracts/broadcast
+apps/subgraph/generated
+apps/subgraph/build
+pnpm-lock.yaml

@@ -1,0 +1,264 @@
+"""
+Global platform configuration and statistics
+"""
+type Global @entity(immutable: false) {
+    id: ID! # Always "1" - singleton
+    totalSeries: BigInt!
+    totalBlindBoxes: BigInt!
+    totalRevenue: BigInt!
+}
+
+"""
+Mapping helper to find series by contract addresses
+"""
+type SeriesMapping @entity(immutable: true) {
+    id: ID! # Contract address (series, nft, or pool)
+    seriesId: String!
+    contractType: ContractType!
+}
+
+enum ContractType {
+    SERIES
+    NFT
+    PRIZE_POOL
+}
+
+"""
+A blind box series created by a user
+"""
+type Series @entity(immutable: false) {
+    id: ID! # Series ID (uint256)
+    seriesAddress: Bytes!
+    nftAddress: Bytes!
+    prizePoolAddress: Bytes!
+    creator: User!
+
+    # Configuration
+    price: BigInt!
+    paymentToken: Bytes! # address(0) for native
+    maxSupply: BigInt!
+    maxAssetTypesPerOpening: Int!
+    startTime: BigInt!
+    endTime: BigInt! # 0 for unlimited
+    configGuard: Bytes!
+    buyGuard: Bytes!
+    oracle: Bytes!
+
+    # Lock + leftover policy
+    configLocked: Boolean!
+    leftoverMode: Int!
+    leftoverRecipient: Bytes!
+    leftoversSweptAt: BigInt
+    leftoversSweptTx: Bytes
+    leftoversSweptTo: Bytes
+
+    # Statistics
+    totalPurchased: BigInt!
+    totalOpened: BigInt!
+    totalClaimed: BigInt!
+    totalRevenue: BigInt!
+    activeAssetTypeCount: Int!
+
+    # Relationships
+    blindBoxes: [BlindBox!]! @derivedFrom(field: "series")
+    assets: [Asset!]! @derivedFrom(field: "series")
+    assetConfigs: [AssetConfig!]! @derivedFrom(field: "series")
+    transactions: [Transaction!]! @derivedFrom(field: "series")
+    leftoverTransfers: [LeftoverTransfer!]! @derivedFrom(field: "series")
+
+    # Metadata
+    createdAt: BigInt!
+    createdTx: Bytes!
+}
+
+"""
+Individual blind box NFT
+"""
+type BlindBox @entity(immutable: false) {
+    id: ID! # Series address + tokenId
+    series: Series!
+    tokenId: BigInt!
+    owner: User!
+
+    # Status tracking
+    status: BlindBoxStatus!
+    purchasedAt: BigInt!
+    purchasedTx: Bytes!
+    openedAt: BigInt
+    openedTx: Bytes
+    requestId: Bytes
+    claimedAt: BigInt
+    claimedTx: Bytes
+
+    # Prize distribution
+    prizes: [PrizeDistribution!]! @derivedFrom(field: "blindBox")
+}
+
+enum BlindBoxStatus {
+    UNOPENED
+    OPENED
+    CLAIMED
+    BURNED
+}
+
+"""
+User account with aggregated statistics
+"""
+type User @entity(immutable: false) {
+    id: ID! # User address
+    address: Bytes!
+
+    # Statistics
+    totalPurchased: BigInt!
+    totalOpened: BigInt!
+    totalClaimed: BigInt!
+    totalSpent: BigInt!
+
+    # Relationships
+    createdSeries: [Series!]! @derivedFrom(field: "creator")
+    blindBoxes: [BlindBox!]! @derivedFrom(field: "owner")
+    transactions: [Transaction!]! @derivedFrom(field: "user")
+
+    # Metadata
+    firstSeenAt: BigInt!
+    lastActivityAt: BigInt!
+}
+
+"""
+Asset in a series prize pool
+"""
+type Asset @entity(immutable: false) {
+    id: ID! # Series address + asset contract + tokenId (if applicable)
+    series: Series!
+    config: AssetConfig
+    assetType: AssetType!
+    assetContract: Bytes!
+    tokenId: BigInt # For ERC721/ERC1155, 0 for ERC20
+    # Balance tracking
+    totalDeposited: BigInt!
+    totalDistributed: BigInt!
+    currentBalance: BigInt!
+
+    # Whitelist status
+    whitelisted: Boolean!
+
+    # Deposit events
+    deposits: [AssetDeposit!]! @derivedFrom(field: "asset")
+    distributions: [PrizeDistribution!]! @derivedFrom(field: "asset")
+}
+
+"""
+Contract-level asset configuration for a series prize pool
+"""
+type AssetConfig @entity(immutable: false) {
+    id: ID! # Series ID + asset contract
+    series: Series!
+    assetContract: Bytes!
+    assetType: AssetType
+    whitelisted: Boolean!
+    configured: Boolean!
+    maxShareBps: Int!
+    totalDeposited: BigInt!
+    totalDistributed: BigInt!
+    currentBalance: BigInt!
+    updatedAt: BigInt!
+}
+
+enum AssetType {
+    ERC20
+    ERC721
+    ERC1155
+}
+
+"""
+Individual asset deposit to prize pool
+"""
+type AssetDeposit @entity(immutable: true) {
+    id: ID! # Transaction hash + log index
+    asset: Asset!
+    depositor: Bytes!
+    amount: BigInt!
+    timestamp: BigInt!
+    transaction: Bytes!
+}
+
+"""
+Individual prize distributed to user
+"""
+type PrizeDistribution @entity(immutable: true) {
+    id: ID! # Transaction hash + log index
+    blindBox: BlindBox!
+    asset: Asset!
+    recipient: Bytes!
+    amount: BigInt!
+    timestamp: BigInt!
+    transaction: Bytes!
+}
+
+"""
+Leftover assets swept out of a prize pool after the series ends
+"""
+type LeftoverTransfer @entity(immutable: true) {
+    id: ID! # Transaction hash + log index
+    series: Series!
+    recipient: Bytes!
+    assetType: AssetType!
+    assetContract: Bytes!
+    tokenId: BigInt! # 0 for ERC20
+    amount: BigInt! # 1 for ERC721
+    timestamp: BigInt!
+    transaction: Bytes!
+}
+
+"""
+Transaction record for purchases, opens, and claims
+"""
+type Transaction @entity(immutable: true) {
+    id: ID! # Transaction hash + log index
+    series: Series!
+    user: User!
+    type: TransactionType!
+    blindBoxId: BigInt
+
+    # Payment info
+    price: BigInt
+    paymentToken: Bytes
+    oracleFeePaid: BigInt
+
+    # Timestamps
+    timestamp: BigInt!
+    blockNumber: BigInt!
+    transactionHash: Bytes!
+}
+
+enum TransactionType {
+    PURCHASE
+    OPEN
+    CLAIM
+}
+
+"""
+Daily statistics for analytics
+"""
+type DailyStats @entity(immutable: false) {
+    id: ID! # Days since unix epoch
+    date: String! # Days since unix epoch
+    # Volumes
+    totalPurchases: BigInt!
+    totalOpens: BigInt!
+    totalClaims: BigInt!
+    totalRevenue: BigInt!
+
+    # Unique users
+    uniqueBuyers: BigInt!
+    newUsers: BigInt!
+}
+
+"""
+Internal helper entity for counting unique buyers per day
+"""
+type DailyBuyerMarker @entity(immutable: true) {
+    id: ID!
+    day: String!
+    user: User!
+}

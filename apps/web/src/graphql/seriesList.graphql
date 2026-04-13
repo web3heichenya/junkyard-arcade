@@ -1,0 +1,19 @@
+query SeriesList {
+  series_collection {
+    id
+    seriesAddress
+    nftAddress
+    prizePoolAddress
+    price
+    paymentToken
+    maxSupply
+    maxAssetTypesPerOpening
+    startTime
+    endTime
+    activeAssetTypeCount
+    totalPurchased
+    totalOpened
+    totalClaimed
+    totalRevenue
+  }
+}

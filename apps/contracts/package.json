@@ -1,0 +1,11 @@
+{
+    "name": "@junkyard-arcade/contracts",
+    "private": true,
+    "scripts": {
+        "build": "forge build",
+        "test": "forge test",
+        "lint": "forge fmt --check",
+        "fmt": "forge fmt",
+        "format": "forge fmt"
+    }
+}

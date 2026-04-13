@@ -1,0 +1,16 @@
+query MyBoxes($id: ID!) {
+  user(id: $id) {
+    id
+    blindBoxes {
+      id
+      tokenId
+      status
+      purchasedAt
+      openedAt
+      claimedAt
+      series {
+        id
+      }
+    }
+  }
+}

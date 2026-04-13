@@ -1,0 +1,717 @@
+{
+  "app": {
+    "name": "Junkyard Arcade",
+    "tagline": "把 MEME 碎片，打包成可验证公平的盲盒。"
+  },
+  "footer": {
+    "builtWith": "链上构建，源自",
+    "community": "社区",
+    "resources": "资源",
+    "github": "GitHub",
+    "rights": "保留所有权利。"
+  },
+  "nav": {
+    "create": "创建",
+    "series": "系列",
+    "me": "我的盲盒",
+    "docs": "文档",
+    "menu": "菜单",
+    "connectWallet": "连接钱包",
+    "disconnect": "断开连接"
+  },
+  "home": {
+    "title": "Junkyard Arcade",
+    "subtitle": "把数字废料打包进可验证的链上盲盒。",
+    "ctaPrimary": "开始探索",
+    "ctaSecondary": "连接钱包",
+    "heroTag1": "纯血 DEGEN",
+    "heroTag2": "链上可验证",
+    "heroTag3": "WAGMI",
+    "heroPreviewLabel": "Junkyard 信号",
+    "heroPreviewStatus": "就绪",
+    "flowEyebrow": "运转流程",
+    "flowTitle": "三步走完，一个不可逆循环。",
+    "exploreCta": "进入探索页",
+    "step1Title": "配置并上架",
+    "step1Desc": "创建者定义售卖参数、预言机和单次开盒资产数上限，并为奖池注入资产。",
+    "step2Title": "购买并开盒",
+    "step2Desc": "用户先购买 soulbound 盲盒，需要开盒时再支付随机数费用触发开奖。",
+    "step3Title": "领取并回收",
+    "step3Desc": "VRF 返回后即可领取奖励，盲盒被销毁；若奖池空了，则等待创建者补货。",
+    "story1Kicker": "资产打包",
+    "story1Title": "把钱包里零碎又沉睡的资产，重新包装成有人想开的盲盒。",
+    "story2Kicker": "开奖张力",
+    "story2Title": "在随机数真正落链之前，盲盒不会提前暴露结果。",
+    "story3Kicker": "运营控制台",
+    "story3Title": "把一整个运营动作，压进一个可读性很强的控制台。",
+    "faqKicker": "Q&A",
+    "faqTitle": "开盒前先看",
+    "faq1Question": "Junkyard Arcade 的盲盒里到底能装什么？",
+    "faq1Answer": "每个系列都可以放入 ERC20、ERC721 和 ERC1155 奖励。最终拿到什么，取决于创建者为该系列配置和充值的奖池内容。",
+    "faq2Question": "为什么购买和开盒要分成两步？",
+    "faq2Answer": "购买只会铸造盲盒 NFT，开盒才会请求随机数。这样结果不会被提前暴露，整个揭晓过程也能在链上被验证。",
+    "faq3Question": "创建者在上线之后还能继续运营这个 drop 吗？",
+    "faq3Answer": "可以。创建者仍然可以继续补充奖励、在协议规则内调整售卖参数、检查白名单状态，并在系列结束后处理剩余资产。",
+    "faq4Question": "我需要相信某个中心化 reveal 服务器吗？",
+    "faq4Answer": "不需要。揭晓流程围绕 Chainlink VRF 设计，随机数和奖励发放都通过链上交互完成，而不是依赖私有 reveal 脚本。"
+  },
+  "series": {
+    "exploreTitle": "系列探索",
+    "exploreDesc": "浏览所有已索引系列，查看供应和奖池状态，并进入正在进行中的盲盒系列。",
+    "kicker": "Drop 雷达",
+    "detailKicker": "系列控制塔",
+    "detailDesc": "先读当前售卖压力、奖池库存和运营控制，再决定现在是该买、该开，还是该补货。",
+    "emptyTitle": "暂无系列",
+    "emptyDesc": "还没有盲盒系列被创建到链上。成为第一个部署的人吧。",
+    "detailTitle": "系列",
+    "inspectCta": "查看详情",
+    "creator": "创建者",
+    "price": "单价",
+    "paymentToken": "支付资产",
+    "paymentNative": "原生币",
+    "sold": "已售",
+    "max": "上限",
+    "starts": "开售",
+    "ends": "结束",
+    "unlimited": "长期开放",
+    "open": "开盒",
+    "claim": "领取",
+    "buy": "购买",
+    "opened": "已开盒",
+    "claimed": "已领取",
+    "oracle": "预言机",
+    "balShort": "余额",
+    "depShort": "充值",
+    "outShort": "发放",
+    "assetCapShort": "单盒资产类",
+    "activeAssetsShort": "当前有货类",
+    "assetCapLabel": "单次开盒最多资产类型数",
+    "maxShareLabel": "单次领取最大份额",
+    "prizePoolTitle": "奖池",
+    "noAssets": "暂无资产充值。",
+    "missingAddressesTitle": "操作",
+    "missingAddressesDesc": "Subgraph 缺少合约地址数据。",
+    "featuredTitle": "重点信号",
+    "metricRevenue": "收入",
+    "statusLabel": "状态",
+    "configLocked": "配置锁",
+    "leftoverPolicy": "剩余资产策略",
+    "prizePool": "奖池合约",
+    "collectionAddress": "盲盒 NFT",
+    "sectionRuntime": "运行态势",
+    "sectionRuntimeDesc": "先看清这个系列当前的售卖窗口、运行状态和关键合约路由，再决定现在是否适合参与或管理。",
+    "runtimeWindowDesc": "结合售卖窗口和当前状态判断这个系列是正常进行、因库存卡住，还是已经走向收尾。",
+    "runtimeContractsTitle": "合约路由",
+    "runtimeContractsDesc": "这条系列购买、发奖和守卫校验实际经过的关键合约地址。",
+    "sectionRewards": "奖励矩阵",
+    "sectionRewardsDesc": "集中查看奖励资产的配置状态、白名单结果和单次领取份额限制，方便创建者直接管理奖池。",
+    "assetConfigsTitle": "资产配置",
+    "assetConfigsDesc": "奖励资产的白名单状态、配置状态，以及每类资产的单次领取份额限制。",
+    "leftoverTimelineTitle": "处理时间线",
+    "leftoverTimelineDesc": "系列可清算后，所有剩余资产 sweep 的逐笔链上记录。",
+    "whitelisted": "已白名单",
+    "notWhitelisted": "未白名单",
+    "configured": "已配置",
+    "pendingConfig": "待配置",
+    "leftoverRecipient": "接收方",
+    "leftoverTime": "时间",
+    "sectionPulse": "市场脉冲",
+    "sectionPulseDesc": "先读全局，再决定点进哪一个系列。这里会先告诉你热度、消耗和卡顿点在哪里。",
+    "sectionBoard": "看板",
+    "sectionBoardDesc": "按最新顺序展示所有已索引系列，并把足够关键的链上信号直接摊平在卡片里。",
+    "statsLiveTitle": "进行中系列",
+    "statsLiveDesc": "当前仍可参与、且奖池还有货的系列数量。",
+    "statsSoldTitle": "累计售出",
+    "statsSoldDesc": "当前看板中所有系列的购买总量。",
+    "statsClaimedTitle": "累计领取",
+    "statsClaimedDesc": "已经在链上完成发奖和领取的总次数。",
+    "statsRefillTitle": "等待补货",
+    "statsRefillDesc": "因奖池见底而卡住、等待创建者补货的系列数。",
+    "metricSupply": "供应进度",
+    "metricLifecycle": "生命周期",
+    "metricAssets": "资产分布",
+    "metricWindow": "售卖窗口",
+    "tabsOverview": "基本信息",
+    "tabsOwned": "已购买盲盒",
+    "tabsAdmin": "管理员配置",
+    "buyNow": "立即购买",
+    "boxesTitle": "我的盲盒架",
+    "boxesDesc": "当前系列下你已经购买过的所有盲盒，按状态决定是否可以继续开盒或领取。",
+    "ownedEmpty": "你还没有购买这个系列的盲盒。",
+    "claimedPrizeCount": "已领取资产数",
+    "claimedRewardsTitle": "领取结果",
+    "claimedRewardsDesc": "这里展示这个盲盒已经发放到钱包的资产类型和数量。",
+    "state": {
+      "live": "进行中",
+      "awaitingRefill": "等待补货",
+      "soldOut": "已售罄",
+      "ended": "已结束"
+    }
+  },
+  "common": {
+    "language": "语言",
+    "english": "English",
+    "chinese": "中文",
+    "loading": "加载中…",
+    "notAvailable": "暂不可用",
+    "unknownError": "未知错误",
+    "errorPrefix": "错误",
+    "subgraphErrorPrefix": "Subgraph 错误",
+    "txPreparing": "准备发起交易",
+    "txSent": "交易已发出",
+    "txSuccess": "交易已确认",
+    "txFailed": "交易失败",
+    "whitelisted": "已白名单"
+  },
+  "hero": {
+    "dust": "TOKENS",
+    "box": "NFT",
+    "rng": "可验证随机"
+  },
+  "notFound": {
+    "desc": "页面不存在。",
+    "goHome": "返回首页"
+  },
+  "docs": {
+    "sidebarEyebrow": "文档",
+    "sidebarTitle": "项目文档",
+    "sidebarDescription": "单页文档索引，覆盖项目介绍、特色和完整使用说明。",
+    "heroEyebrow": "Junkyard Arcade 文档中心",
+    "heroTitle": "项目文档",
+    "heroDescription": "这里以更传统的文档阅读方式，完整整理了盲盒协议的项目介绍、核心特色和使用说明。",
+    "footerLabel": "项目文档",
+    "footerCurrent": "单页索引",
+    "pages": [
+      {
+        "category": "get-started",
+        "slug": "introduction",
+        "groupLabel": "项目概览",
+        "navLabel": "项目介绍",
+        "title": "项目介绍",
+        "description": "Junkyard Arcade 是一套完整的链上盲盒系统，围绕可验证随机数、多资产奖池和面向运营者的前端控制台来组织整个流程。",
+        "eyebrow": "Introduction",
+        "sections": [
+          {
+            "id": "overview",
+            "title": "项目是什么",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "content": "协议把代币零散资产、NFT 和混合库存打包成盲盒系列。创建者部署系列合约并为奖池充值，玩家再通过统一的产品入口完成购买、开盒和领取。"
+              },
+              {
+                "type": "paragraph",
+                "content": "整个仓库拆成三层：Foundry 合约负责协议规则，Graph 子图负责索引状态，Next.js 15 前端负责创建者和玩家的产品体验。"
+              }
+            ]
+          },
+          {
+            "id": "stack",
+            "title": "技术栈概览",
+            "blocks": [
+              {
+                "type": "list",
+                "items": [
+                  "合约层：Solidity + Foundry，覆盖 factory、series、prize pool 和 oracle 集成。",
+                  "索引层：The Graph subgraph，负责系列、盲盒、资产和交易状态。",
+                  "前端层：Next.js 15 App Router、React 19、wagmi、RainbowKit、shadcn/ui。"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "constraints",
+            "title": "当前产品约束",
+            "blocks": [
+              {
+                "type": "quote",
+                "content": "当前的创建流程是有意收敛的：只支持 Base Sepolia、固定的 factory/oracle 预设，以及优先强调清晰度而不是协议广度的 UI。"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "category": "get-started",
+        "slug": "quick-start",
+        "groupLabel": "项目概览",
+        "navLabel": "快速开始",
+        "title": "快速开始",
+        "description": "这是把整个工作区在本地跑起来的最短路径，同时也能验证合约、子图和前端三层是否已经连通。",
+        "eyebrow": "Setup",
+        "sections": [
+          {
+            "id": "install",
+            "title": "1. 安装依赖",
+            "blocks": [
+              {
+                "type": "code",
+                "code": "pnpm install"
+              }
+            ]
+          },
+          {
+            "id": "env",
+            "title": "2. 准备前端环境变量",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "content": "复制 web 的示例 env，并填写 subgraph 地址以及 Base Sepolia 的 factory / oracle 预设。"
+              },
+              {
+                "type": "code",
+                "code": "cp apps/web/.env.example apps/web/.env.local"
+              }
+            ]
+          },
+          {
+            "id": "validate",
+            "title": "3. 校验协议和索引层",
+            "blocks": [
+              {
+                "type": "code",
+                "code": "pnpm --dir apps/contracts test\npnpm --dir apps/subgraph codegen\npnpm --dir apps/subgraph build"
+              }
+            ]
+          },
+          {
+            "id": "run",
+            "title": "4. 启动前端",
+            "blocks": [
+              {
+                "type": "code",
+                "code": "pnpm --dir apps/web graphclient:build\npnpm --dir apps/web dev"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "category": "protocol",
+        "slug": "features",
+        "groupLabel": "核心概念",
+        "navLabel": "核心特色",
+        "title": "核心特色",
+        "description": "这个协议在最容易出错的地方更强调约束，在创建者需要发挥空间的地方保留灵活度。",
+        "eyebrow": "Features",
+        "sections": [
+          {
+            "id": "randomness",
+            "title": "可验证随机数",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "content": "在预言机返回随机数之前，盲盒不会结算具体奖励。这样既能保证开盒前结果不可见，也避免了链下 reveal 脚本的维护负担。"
+              }
+            ]
+          },
+          {
+            "id": "assets",
+            "title": "混合奖励库存",
+            "blocks": [
+              {
+                "type": "list",
+                "items": [
+                  "ERC20：适合代币型奖励。",
+                  "ERC721：适合单件收藏品。",
+                  "ERC1155：适合半同质化库存型奖品。"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "operations",
+            "title": "运营控制能力",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "content": "创建者可以在详情页的管理区域中调整售卖配置、设置剩余资产策略，并管理奖池库存。"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "category": "protocol",
+        "slug": "lifecycle",
+        "groupLabel": "核心概念",
+        "navLabel": "盲盒生命周期",
+        "title": "盲盒生命周期",
+        "description": "从部署到剩余资产处理，协议把每个阶段拆开，使系统更容易审计，也更利于运营落地。",
+        "eyebrow": "Lifecycle",
+        "sections": [
+          {
+            "id": "deploy",
+            "title": "1. 部署系列",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "content": "Factory 会根据名称、符号、供应上限、售卖窗口、支付资产和守卫 / 预言机预设创建新的系列合约。"
+              }
+            ]
+          },
+          {
+            "id": "fund",
+            "title": "2. 奖池充值",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "content": "系列 owner 在售卖前先初始化奖励资产、加入白名单、完成授权，再把库存充值到奖池中。"
+              }
+            ]
+          },
+          {
+            "id": "settle",
+            "title": "3. 购买、开盒、领取",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "content": "玩家购买盲盒 NFT 后，再请求随机数执行开盒；预言机回调完成后，再发起领取将奖励真正结算出来。"
+              }
+            ]
+          },
+          {
+            "id": "leftovers",
+            "title": "4. 处理剩余资产",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "content": "当系列结束且领取阶段基本完成后，owner 可以按配置对剩余资产执行收尾策略。"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "category": "guides",
+        "slug": "creator-flow",
+        "groupLabel": "操作指南",
+        "navLabel": "创建者流程",
+        "title": "创建者流程",
+        "description": "如何用当前前端完成一个系列的创建、充值、监控和收尾。",
+        "eyebrow": "Guide",
+        "sections": [
+          {
+            "id": "create",
+            "title": "创建系列",
+            "blocks": [
+              {
+                "type": "list",
+                "items": [
+                  "打开 /create，连接创建者钱包。",
+                  "填写 NFT 名称、符号、供应上限、价格和售卖时间窗口。",
+                  "发起部署交易，等待跳转到新系列详情页。"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "funding",
+            "title": "充值奖励资产",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "content": "在系列详情页的管理 tabs 中，通过奖池面板完成资产白名单和 ERC20、ERC721、ERC1155 奖励库存充值。"
+              }
+            ]
+          },
+          {
+            "id": "manage",
+            "title": "管理运营状态",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "content": "通过 /series 和系列详情页持续观察售卖与领取情况；在活动结束后，再执行剩余资产处理和清算动作。"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "category": "guides",
+        "slug": "collector-flow",
+        "groupLabel": "操作指南",
+        "navLabel": "玩家流程",
+        "title": "玩家流程",
+        "description": "玩家如何发现盲盒、购买、开盒并最终领取奖励。",
+        "eyebrow": "Guide",
+        "sections": [
+          {
+            "id": "discover",
+            "title": "发现系列",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "content": "先在 /series 浏览正在进行的系列，对比当前库存状态、售卖压力和时间窗口。"
+              }
+            ]
+          },
+          {
+            "id": "buy",
+            "title": "购买盲盒",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "content": "进入目标系列详情页后，连接钱包，在操作区完成盲盒购买，NFT 会直接铸到当前钱包里。"
+              }
+            ]
+          },
+          {
+            "id": "open-claim",
+            "title": "开盒与领取",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "content": "在系列详情页的已购盲盒架或 /me 页面中发起开盒；待随机数完成后，再回来执行领取。"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "category": "reference",
+        "slug": "configuration",
+        "groupLabel": "参考",
+        "navLabel": "配置说明",
+        "title": "配置说明",
+        "description": "当前 Base Sepolia 部署路径下，前端最重要的一组环境变量说明。",
+        "eyebrow": "Reference",
+        "sections": [
+          {
+            "id": "env-values",
+            "title": "关键环境变量",
+            "blocks": [
+              {
+                "type": "list",
+                "items": [
+                  "NEXT_PUBLIC_SITE_URL：metadata 和 sitemap 的主地址。",
+                  "SUBGRAPH_URL / NEXT_PUBLIC_SUBGRAPH_URL：索引数据端点。",
+                  "NEXT_PUBLIC_FACTORY_SEPOLIA：创建流程使用的 factory 预设地址。",
+                  "NEXT_PUBLIC_DEFAULT_ORACLE_SEPOLIA：创建页展示的默认 Chainlink VRF 预言机预设。"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "example",
+            "title": "示例",
+            "blocks": [
+              {
+                "type": "code",
+                "code": "NEXT_PUBLIC_SITE_URL=http://localhost:3000\nSUBGRAPH_URL=http://localhost:8000/subgraphs/name/junkyard\nNEXT_PUBLIC_SUBGRAPH_URL=http://localhost:8000/subgraphs/name/junkyard\nNEXT_PUBLIC_FACTORY_SEPOLIA=0x...\nNEXT_PUBLIC_DEFAULT_ORACLE_SEPOLIA=0x..."
+              }
+            ]
+          },
+          {
+            "id": "notes",
+            "title": "补充说明",
+            "blocks": [
+              {
+                "type": "quote",
+                "content": "当前前端的创建流程有意固定在 Base Sepolia。如果未来扩展到生产网络，这个文档页也应该和预设系统一起同步扩展。"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "create": {
+    "kicker": "创建控制台",
+    "title": "创建系列",
+    "overviewCard1Title": "定义这次投放",
+    "overviewCard1Desc": "在第一次铸造发生前，把系列身份、供应、售卖窗口和支付方式一次定好。",
+    "overviewCard2Title": "锁住规则边界",
+    "overviewCard2Desc": "守卫和白名单合约决定谁能配置、购买以及请求随机数，减少上线后的意外。",
+    "pageDesc": "通过钱包在 Base Sepolia 上发起新的盲盒系列。",
+    "desc": "创建流程已固定到单一网络，并把支付资产、Guard 和预言机改成可读的预设选项。",
+    "formTitle": "部署配置",
+    "formDesc": "先核对系列身份、售卖设置和合约预设，再发起部署交易。",
+    "completionLabel": "已就绪模块",
+    "fixedNetwork": "Base Sepolia",
+    "sectionIdentity": "集合身份",
+    "sectionIdentityDesc": "这些值会决定 soulbound 盲盒系列在链上和钱包中的名称与符号。",
+    "sectionSale": "售卖参数",
+    "sectionSaleDesc": "配置价格、供应、单次开盒上限和时间窗口，注意其中部分参数创建后不可修改。",
+    "sectionSecurity": "守卫与随机源",
+    "sectionSecurityDesc": "把预言机与两个 guard 合约一起核对，确保配置权限和购买路径都正确。",
+    "name": "NFT 名称",
+    "symbol": "NFT 符号",
+    "priceEther": "单价（ether）",
+    "paymentToken": "支付资产",
+    "maxSupply": "最大供应",
+    "maxAssetTypesPerOpening": "单次开盒最多资产类型数",
+    "maxAssetTypesPerOpeningHint": "创建时固定，之后不可修改。控制一个盲盒最多会发出多少种不同资产合约。",
+    "startTime": "开始时间",
+    "endTime": "结束时间",
+    "endTimeHint": "留空表示长期开放。",
+    "configGuard": "配置阶段守卫",
+    "buyGuard": "购买阶段守卫",
+    "oracle": "预言机",
+    "selectPlaceholder": "选择一个选项",
+    "pickStartDate": "选择开始时间",
+    "pickEndDate": "选择结束时间",
+    "timeLabel": "时间",
+    "clearDate": "清空",
+    "paymentNativeOption": "原生代币（ETH）",
+    "guardNoneOption": "不使用守卫",
+    "configGuardOwnerOption": "Owner Config 守卫",
+    "buyGuardOpenOption": "Open Buy 守卫",
+    "oracleDefaultOption": "Chainlink VRF 预言机",
+    "previewTitle": "投放预览",
+    "previewDesc": "签名前快速过一遍核心参数。",
+    "previewCollection": "集合",
+    "previewNetwork": "网络",
+    "previewPayment": "支付",
+    "previewWindow": "售卖窗口",
+    "previewFactory": "工厂",
+    "previewGuards": "守卫",
+    "previewOracle": "预言机",
+    "unlimitedLabel": "长期开放",
+    "checklistTitle": "部署前确认",
+    "checklistDesc": "上线前最容易漏掉、但最该最后再确认一次的规则。",
+    "check1": "价格现在按 ether 输入，提交时会自动换算成链上使用的 wei。",
+    "check2": "单次开盒最多资产类型数在创建后会被锁定，之后不能修改。",
+    "check3": "如果不填写结束时间，系列会保持长期开放状态。",
+    "quickStatusTitle": "快速状态",
+    "quickStatusDesc": "钱包弹窗前，先看这三个信号。",
+    "statusNetwork": "网络",
+    "statusConfig": "配置",
+    "statusOk": "就绪",
+    "statusMissing": "缺失",
+    "switchNetwork": "切换",
+    "toastExecuting": "准备发起交易",
+    "toastSent": "交易已发出",
+    "toastSuccess": "系列创建成功",
+    "toastFailed": "交易失败",
+    "submit": "创建系列"
+  },
+  "funding": {
+    "title": "奖池充值",
+    "desc": "先初始化 immutable 资产配置，再为该系列白名单并充值 ERC20、ERC721 或 ERC1155 奖品。",
+    "connectPrompt": "充值操作需要钱包",
+    "connectDesc": "先连接创建者钱包，再去配置奖励资产通道和补充库存。",
+    "token": "资产合约地址",
+    "amount": "数量（最小单位）",
+    "tokenId": "Token ID",
+    "maxShareBps": "单次领取最大份额（bps）",
+    "maxSharePercent": "单次领取最大份额（%）",
+    "whitelistStep": "初始化 / 白名单奖励资产",
+    "depositStep": "充值 ERC20 余额",
+    "approveErc721": "授权 ERC721 Token",
+    "approveErc1155": "授权 ERC1155 Operator",
+    "depositErc20": "充值 ERC20 余额",
+    "depositErc721": "充值 ERC721 Token",
+    "depositErc1155": "充值 ERC1155 余额",
+    "whitelist": "白名单该资产",
+    "deposit": "充值 ERC20",
+    "depositAction": "执行充值"
+  },
+  "error": {
+    "title": "页面发生错误",
+    "desc": "渲染或数据请求出现问题，请重试。",
+    "retry": "重试",
+    "goHome": "返回首页"
+  },
+  "actions": {
+    "connectPrompt": "操作该系列前需要钱包",
+    "connectDesc": "先连接钱包，之后才能购买盲盒、请求随机数并领取奖励。",
+    "allowance": "授权额度",
+    "approve": "授权",
+    "approved": "已授权",
+    "viewOnExplorer": "在区块浏览器查看",
+    "awaitingRandomness": "等待随机数",
+    "claimReady": "可领取",
+    "openDesc": "为这个盲盒发起一次开盒请求。链上确认后，将等待 Chainlink 返回随机数。",
+    "waitingDesc": "随机数请求已经发出，正在等待 Chainlink 回传。完成后即可领取奖励。",
+    "claimDesc": "随机数已经回传，现在可以正式领取最终奖励。"
+  },
+  "admin": {
+    "title": "基本信息配置",
+    "panelDesc": "这里集中放售卖控制和剩余资产策略，适合在系列需要收紧、延期或最终清算时使用。",
+    "locked": "已锁定",
+    "lockedYes": "是",
+    "lockedNo": "否",
+    "ended": "已结束",
+    "endedYes": "是",
+    "endedNo": "否",
+    "claimedShort": "已领取",
+    "connectPromptTitle": "创建者控制当前锁定",
+    "connectTip": "连接钱包后可管理该系列（以守卫规则为准）。",
+    "saleTab": "售卖",
+    "leftoversTab": "剩余资产",
+    "salePriceWei": "单价（ether）",
+    "saleStart": "开始时间",
+    "saleEnd": "结束时间",
+    "saleMax": "最大供应",
+    "updateSale": "更新售卖配置",
+    "currentPolicy": "当前策略",
+    "mode": "模式",
+    "changeMode": "切换",
+    "leftoverReturn": "退回",
+    "leftoverDonate": "捐赠",
+    "leftoverBurn": "销毁",
+    "recipient": "接收地址",
+    "recipientHint": "选择销毁时合约会忽略该地址；选择捐赠时地址不可为 0。",
+    "setPolicy": "设置策略",
+    "sweepHint": "系列结束且所有盲盒都已领取后，可一键处理剩余资产。",
+    "sweep": "处理剩余资产"
+  },
+  "leftovers": {
+    "title": "剩余资产记录",
+    "desc": "系列结束后，奖池剩余资产被处理（sweep）的逐条记录。",
+    "noTransfers": "暂无剩余资产处理记录。"
+  },
+  "seriesPage": {
+    "loadFailedTitle": "系列加载失败",
+    "loadFailedDesc": "Subgraph 请求失败或未返回数据。"
+  },
+  "me": {
+    "kicker": "奖品仓位",
+    "title": "我的盲盒甲板",
+    "desc": "先看清哪些还没开、哪些已经走完流程、哪些系列现在最需要你操作，别让价值停在仓里。",
+    "lastActivity": "最近活动",
+    "connectHint": "连接钱包后，才能加载你的盲盒货架和待处理队列。",
+    "signalTitle": "钱包信号",
+    "metricOwned": "持有盲盒",
+    "metricOwnedHint": "当前这个钱包下仍然挂着的全部盲盒。",
+    "metricQueue": "待处理",
+    "metricQueueHint": "还没完成开盒或领取的盲盒数量。",
+    "metricSeries": "进行中系列",
+    "metricSeriesHint": "仍值得继续盯盘的不同活跃系列数。",
+    "readyOpen": "待开盒",
+    "readyClaim": "待领取",
+    "totalPurchased": "累计购买",
+    "totalOpened": "累计开盒",
+    "totalClaimed": "累计领取",
+    "queueTitle": "待操作队列",
+    "queueDesc": "把现在最该处理的盲盒先提出来，不让它们淹没在完整货架里。",
+    "queueEmpty": "当前没有需要你立刻处理的盲盒，队列已经清空。",
+    "rackTitle": "盲盒货架",
+    "rackDesc": "用货架视图查看你拥有的全部盲盒，并结合系列运行信号决定现在是开盒、领取，还是继续观察。",
+    "filterAll": "全部",
+    "filterUnopened": "未开盒",
+    "filterOpened": "待领取",
+    "filterClaimed": "已领取",
+    "emptyUnopened": "当前没有待开盒盲盒。",
+    "emptyOpened": "当前没有待领取盲盒。",
+    "emptyClaimed": "还没有已完成领取的记录。",
+    "connectTitle": "你的仓位还未上线",
+    "connectDesc": "连接购买盲盒的钱包后，才能加载你的货架、待处理队列，以及每个系列的快捷入口。",
+    "noBoxes": "你还没有盲盒。",
+    "boxTitle": "盲盒",
+    "seriesTitle": "系列",
+    "bought": "购买",
+    "opened": "开盒",
+    "claimed": "领取",
+    "viewSeries": "查看系列",
+    "openNow": "去开盒",
+    "claimNow": "去领取"
+  },
+  "status": {
+    "UNOPENED": "未开盒",
+    "OPENED": "已开盒",
+    "CLAIMED": "已领取",
+    "BURNED": "已销毁"
+  }
+}
